@@ -28,9 +28,9 @@ class BaseConverter {
 
 		for( int i = 0; i < number.length(); i++) {
 			char c = number.charAt(number.length() - 1 - i);
-			charAsString = 	(new Character(c)).toString();
+			String charAsString = (new Character(c)).toString();
 			if (base != 16) {
-				int val = (int)(Integer.parseInt(charAsString) * Math.pow(base, i));
+				val = (int)(Integer.parseInt(charAsString) * Math.pow(base, i));
 			}
 			else {
 				switch(c) {
