@@ -6,11 +6,15 @@ class BaseConverter {
 		String base_string = args[1];
 
 		int decimal_int = toBaseTen(number_string, base_string);
-		String decimal = "" + decimal_int;
 		
+		String decimal = "" + decimal_int;
 		String binary = toBinary(decimal_int);
 		String hex = toHex(decimal_int);
-
+		
+		decimal = pad(decimal, 5); // five is the max number of digits accepted	
+		binary = pad(binary, 16); // max number of bits is 16 
+		hex = pad(hex, 4); // max number of digits is 4
+		
 		System.out.println("Dec:\t" + decimal);
 		System.out.println("Bin:\t" + binary);
 		System.out.println("Hex:\t" + hex);
@@ -19,7 +23,6 @@ class BaseConverter {
 
 	private static int toBaseTen(String number, String base_string) {
 		int base = Integer.parseInt(base_string);
-		
 		int result = 0;	
 
 		for( int i = 0; i < number.length(); i++) {
@@ -94,5 +97,12 @@ class BaseConverter {
 		return result.reverse().toString();
 
 	} // end method
+
+	private static String pad(String str, int maxSize) {
+		while(str.length() < maxSize) {
+			str = "0" + str; 
+		}
+		return str;
+	}
 
 } // end class
