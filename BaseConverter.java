@@ -24,10 +24,36 @@ class BaseConverter {
 	private static int toBaseTen(String number, String base_string) {
 		int base = Integer.parseInt(base_string);
 		int result = 0;	
+		int val = 0;
 
 		for( int i = 0; i < number.length(); i++) {
 			char c = number.charAt(number.length() - 1 - i);
-			int val = (int)(Integer.parseInt((new Character(c)).toString()) * Math.pow(base, i));
+			charAsString = 	(new Character(c)).toString();
+			if (base != 16) {
+				int val = (int)(Integer.parseInt(charAsString) * Math.pow(base, i));
+			}
+			else {
+				switch(c) {
+					case 'a':
+						val =  (int)(10 * Math.pow(base, i));
+						break;
+					case 'b':
+						val = (int)(11 * Math.pow(base, i));
+						break;
+					case 'c':
+						val = (int)(12 * Math.pow(base, i));
+						break;
+					case 'd':
+						val = (int)(13 * Math.pow(base, i));
+						break;
+					case 'e':
+						val = (int)(14 * Math.pow(base, i));
+						break;
+					case 'f':
+						val = (int)(15 * Math.pow(base, i));
+						break;
+				}
+			}
 			result += val;
 		}
 		return result;
